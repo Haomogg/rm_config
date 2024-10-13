@@ -7,16 +7,16 @@
     <node pkg="nodelet" type="nodelet" name="Processor"
           args="load rm_digtialimg_proc/Processor vision_nodelet" respawn="true">
         <rosparam file="$(find rm_digtialimg_proc)/config/weibull_coefficient.yaml" command="load"/>
-        <rosparam file="$(find rm_digtialimg_proc)/config/make_dataset.yaml" command="load"/>
-        <rosparam file="$(find rm_digtialimg_proc)/config/armor_coefficient.yaml" command="load"/>
-        <rosparam file="$(find rm_digtialimg_proc)/config/preprocess_coefficient.yaml" command="load"/>
+        <rosparam file="$(find rm_digtialimg_proc)/config/make_dataset.yaml" command="load"/> <!--录数据集-->
+        <rosparam file="$(find rm_digtialimg_proc)/config/armor_coefficient.yaml" command="load"/> <!--灯条识别+数字分类-->
+        <rosparam file="$(find rm_digtialimg_proc)/config/preprocess_coefficient.yaml" command="load"/> <!--图像预处理-->
         <remap from="/processor/result_msg" to="/processor/result_msg"/>
         <remap from="debug_image" to="debug_image"/>
         <remap from="/galaxy_camera/image_raw" to="/$(arg camera_type)/$(arg camera_name)/image_raw"/>
     </node>
 
     <node pkg="rm_pose_solver" type="pose_solver_node" name="pose_solver_node" output="screen" respawn="true">
-        <rosparam file="$(find rm_pose_solver)/config/pose_solver_config.yaml" command="load"/>
+        <rosparam file="$(find rm_pose_solver)/config/pose_solver_config.yaml" command="load"/> <!--判断四个角点的角度 进行顺序的重映射-->
         <remap from="/processor/result_msg" to="/processor/result_msg"/>
         <remap from="/galaxy_camera/camera_info" to="/$(arg camera_type)/$(arg camera_name)/camera_info"/>
         <remap from="/detection" to="/detection"/>
@@ -33,7 +33,7 @@
 
     <node pkg="nodelet" type="nodelet" name="forecast"
             args="load fft_forecast/Forecast_Node vision_nodelet" respawn="true">
-            <rosparam file="$(find fft_forecast)/config/forecast.yaml" command="load" />
+            <rosparam file="$(find fft_forecast)/config/forecast.yaml" command="load" /> <!--预测-->
             <rosparam file="$(find fft_forecast)/config/camera.yaml" command="load" />
            <remap from="/hk_camera/image_raw" to="/$(arg camera_type)/$(arg camera_name)/image_raw"/>
     </node>
