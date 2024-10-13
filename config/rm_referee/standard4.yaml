@@ -5,7 +5,7 @@ rm_referee:
   add_ui_max_times: 3
   dbus_topic: "/rm_ecat_hw/dbus"
   interactive_data:
-    - name: "bullet_num_share"
+    - name: bullet_num_share
       config: { delay: 1.0 }
   ui:
     trigger_change:
