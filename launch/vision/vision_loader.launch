@@ -30,10 +30,10 @@
 <!--       <rosparam file="$(find rm_forecast)/config/camera.yaml" command="load" />-->
 <!--      <remap from="/hk_camera/image_raw" to="/$(arg camera_type)/$(arg camera_name)/image_raw"/>-->
 <!--   </node>-->
-
+    <!--  预测  -->
     <node pkg="nodelet" type="nodelet" name="forecast"
             args="load fft_forecast/Forecast_Node vision_nodelet" respawn="true">
-            <rosparam file="$(find fft_forecast)/config/forecast.yaml" command="load" /> <!--预测-->
+            <rosparam file="$(find fft_forecast)/config/forecast.yaml" command="load" /> <!--卡尔曼滤波+追踪参数-->
             <rosparam file="$(find fft_forecast)/config/camera.yaml" command="load" />
            <remap from="/hk_camera/image_raw" to="/$(arg camera_type)/$(arg camera_name)/image_raw"/>
     </node>

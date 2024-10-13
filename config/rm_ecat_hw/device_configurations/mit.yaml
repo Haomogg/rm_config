@@ -1,0 +1,5 @@
+can_motors:
+  - can_id: 1
+    can_bus: 0
+    name: "pitch_joint_motor"
+    type: "DM4310"
