@@ -39,8 +39,7 @@ can_motors:
     need_calibration: true
   - can_id: 5
     can_bus: 0
-    name: "yaw_joint_motor"
+    name: "base_yaw_joint_motor"
     type: "GM6020"
-
 dbus:
   - name: "dbus"

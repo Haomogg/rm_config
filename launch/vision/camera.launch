@@ -1,8 +1,11 @@
 <launch>
     <arg name="imu_trigger" default="false"/>
     <arg name="camera_type" default="$(env CAMERA_TYPE)" doc="Camera type"/>
+    <arg name="camera_type_back" default="galaxy_camera" doc="Camera type"/>
     <arg name="camera_class" default="$(env CAMERA_CLASS)"/>
+    <arg name="camera_class_back" default="GalaxyCameraNodelet"/>
     <arg name="camera_name" default="camera"/>
+    <arg name="camera_back_name" default="camera_back"/>
     <arg name="camera_frame" default="camera_optical_frame"/>
     <arg name="hw_name" default="$(env HW_NAME)" doc="[rm_ecat_hw, rm_hw]"/>
 
@@ -10,7 +13,12 @@
 
     <node pkg="nodelet" type="nodelet" name="vision_nodelet" args="manager"
           output="screen">
-        <param name="num_worker_threads" value="8"/>
+        <param name="num_worker_threads" value="6"/>
+    </node>
+
+    <node pkg="nodelet" type="nodelet" name="vision_nodelet_back" args="manager"
+          output="screen">
+        <param name="num_worker_threads" value="2"/>
     </node>
 
     <node pkg="nodelet" type="nodelet" name="$(arg camera_name)"
@@ -18,8 +26,21 @@
           output="screen">
         <param name="camera_frame_id" value="$(arg camera_frame)"/>
         <param name="enable_imu_trigger" value="$(arg imu_trigger)"/>
+        <param name="camera_sn" value="KE0220030076"/>
         <remap from="$(arg camera_name)/image_raw" to="/$(arg camera_type)/$(arg camera_name)/image_raw"/>
         <remap from="/$(arg camera_name)/imu_trigger" to="/$(arg hw_name)/imu_trigger"/>
         <remap from="/rm_hw/gimbal_imu/trigger_time" to="/$(arg hw_name)/gimbal_imu/trigger_time"/>
+    </node>
+
+    <rosparam file="$(find rm_config)/config/vision/camera_back.yaml" command="load"/>
+
+    <node pkg="nodelet" type="nodelet" name="$(arg camera_back_name)"
+          args="load $(arg camera_type_back)/$(arg camera_class_back) vision_nodelet_back"
+          output="screen">
+        <param name="camera_frame_id" value="$(arg camera_frame)"/>
+        <param name="enable_imu_trigger" value="false"/>
+        <param name="camera_sn" value="KE0200060392"/>
+        <param name="frame_rate" value="80.0"/>
+        <remap from="$(arg camera_name)/image_raw" to="/$(arg camera_type)/$(arg camera_back_name)/image_raw"/>
     </node>
 </launch>
