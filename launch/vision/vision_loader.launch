@@ -1,6 +1,6 @@
 <launch>
     <arg name="robot_type" default="$(env ROBOT_TYPE)" doc="Robot type [standard, hero, engineer]"/>
-    <arg name="camera_type" default="$(env CAMERA_TYPE)" doc="Camera type"/>
+    <arg name="camera_type" default="hk_camera" doc="Camera type"/>
     <arg name="camera_name" default="camera"/>
     <rosparam file="$(find armor_processor)/config/processor_config.yaml" command="load"/>
 
