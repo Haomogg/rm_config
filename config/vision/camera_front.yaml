@@ -1,4 +1,3 @@
-camera_front:
   image_width: 1440
   image_height: 1080
   pixel_format: bgr8
