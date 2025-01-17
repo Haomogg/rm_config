@@ -21,6 +21,7 @@
           controllers/chassis_controller
           controllers/orientation_controller
           controllers/gimbal_controller
+          controllers/base_gimbal_controller
           controllers/dual_yaw_gimbal_controller
           controllers/stack_yaw_gimbal_controller
           controllers/shooter_controller
