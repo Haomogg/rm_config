@@ -23,16 +23,16 @@
         <rosparam file="$(find rm_digtialimg_proc)/config/armor_coefficient.yaml" command="load"/>
         <rosparam file="$(find rm_digtialimg_proc)/config/preprocess_coefficient.yaml" command="load"/>
         <param name="camera_info_url" value="file:///home/dynamicx/.ros/camera_info/hk_camera.yaml"/>
-        <remap from="/processor/result_msg" to="/processor/result_msg"/>
-        <remap from="/debug_image" to="/debug_image"/>
-        <remap from="/galaxy_camera/image_raw" to="/$(arg camera_front_name)/image_raw"/>
+        <remap from="/processor/result_msg" to="/processor/result_msg_front"/>
+        <remap from="/debug_image" to="/debug_image_front"/>
+        <remap from="/galaxy_camera/image_raw" to="/$(arg camera_type_front)/$(arg camera_front_name)/image_raw"/>
     </node>
 
     <node pkg="rm_pose_solver" type="pose_solver_node" name="pose_solver_node_front" output="screen" respawn="true">
         <rosparam file="$(find rm_pose_solver)/config/pose_solver_config.yaml" command="load"/>
-        <remap from="/processor/result_msg" to="/processor/result_msg"/>
-        <remap from="/galaxy_camera/camera_info" to="/$(arg camera_front_name)/camera_info"/>
-        <remap from="/detection" to="/detection_front"/>
+        <remap from="/processor/result_msg" to="/processor/result_msg_front"/>
+        <remap from="/galaxy_camera/camera_info" to="/$(arg camera_type_front)/$(arg camera_front_name)/camera_info"/>
+        <remap from="/detection" to="/detection"/>
     </node>
 
     <!--后相机-->
