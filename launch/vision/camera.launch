@@ -36,10 +36,7 @@
               output="screen">
             <param name="camera_frame_id" value="$(arg camera_frame)"/>
             <param name="enable_imu_trigger" value="$(arg imu_trigger)"/>
-            <param name="camera_sn" value="00L28498183"/>
-            <param name="camera_info_url" value="file:///home/dynamicx/.ros/camera_info/hk_camera.yaml"/>
-            <param name="camera_name" value="hk_camera"/>
-            <remap from="/$(arg camera_front_name)/image_raw" to="/$(arg camera_type_front)/$(arg camera_front_name)/image_raw"/>
+            <remap from="/$(arg camera_front_name)/image_raw" to="/$(arg camera_front_name)/image_raw"/>
             <remap from="/$(arg camera_front_name)/imu_trigger" to="/$(arg hw_name)/imu_trigger"/>
             <remap from="/rm_hw/gimbal_imu/trigger_time" to="/$(arg hw_name)/gimbal_imu/trigger_time"/>
         </node>

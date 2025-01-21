@@ -37,7 +37,7 @@ can_motors:
     name: "trigger_joint_motor"
     type: "M2006"
     need_calibration: true
-  - can_id: 5
+  - can_id: 7
     can_bus: 0
     name: "base_yaw_joint_motor"
     type: "GM6020"
