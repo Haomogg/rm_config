@@ -111,21 +111,21 @@ controllers:
       resistance_coff_qd_18: 0.55
       resistance_coff_qd_30: 0.0
       g: 9.81
-      delay: 0.04
-      wait_next_armor_delay: 0.08
+      delay: 0.04 # 跟随模式下的发弹延迟
+      wait_next_armor_delay: 0.08 # 在中心模式下，等待下一块装甲板和下两块装甲板的delay。给一个远高于临界值的转速，调下两块的delay；再给一个较快的中心模式速度，调下一块的
       wait_diagonal_armor_delay: 0.08
       dt: 0.001
       timeout: 0.001
       publish_rate: 50
-      max_switch_angle: 50
+      max_switch_angle: 50 # 云台的最大切换角、最小切换角
       min_switch_angle: 2
-      ban_shoot_duration: 0.03
-      gimbal_switch_duration: 0.1
+      ban_shoot_duration: 0.03 # 在云台切换时间内的禁止发射的时间，这段时间内一定打不中，所以禁止，在过了这段时间后，发射是有可能打中下一块装甲板的，枪口和下一块相遇运动
+      gimbal_switch_duration: 0.1 # 云台切换角所需时间(0.1)开自瞄和pl读值
       ban_shoot_duration2: 0.025
       gimbal_switch_duration2: 0.027
-      max_track_target_vel: 12.0
-      max_chassis_angular_vel: 12.0
-      track_rotate_target_delay: 0.03
+      max_track_target_vel: 12.0 # 最大跟随速度，即跟随模式和中心模式的临界点
+      max_chassis_angular_vel: 12.0 # 自身的陀螺速度，最终作用在切换角上，自身陀螺速度越高、切换角越小
+      track_rotate_target_delay: 0.03 # 跟随模式下旋转和平移的delay
       track_move_target_delay: 0.04
 
   shooter_controller:
