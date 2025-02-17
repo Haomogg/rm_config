@@ -5,7 +5,7 @@ camera_front:
   camera_info_url: 'file:///home/dynamicx/.ros/camera_info/camera_front.yaml'
   camera_name: camera_front
   camera_frame_id: camera_optical_frame
-  camera_sn: 00L28498180
+  camera_sn: 00L28498183
   frame_rate: 1000
   exposure_auto: false
   exposure_value: 1400

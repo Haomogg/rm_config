@@ -3,7 +3,7 @@
 
     <arg name="camera_type" default="$(env CAMERA_TYPE)" doc="Camera type"/>
     <arg name="camera_type_front" default="hk_camera" doc="Camera type"/>
-    <arg name="camera_type_back" default="galaxy_camera" doc="Camera type"/>
+    <arg name="camera_type_back" default="hk_camera" doc="Camera type"/>
     <arg name="camera_type_left" default="hk_camera" doc="Camera type"/>
     <arg name="camera_type_right" default="hk_camera" doc="Camera type"/>
 
@@ -32,7 +32,12 @@
         <rosparam file="$(find rm_pose_solver)/config/pose_solver_config.yaml" command="load"/>
         <remap from="/processor/result_msg" to="/processor/result_msg_front"/>
         <remap from="/galaxy_camera/camera_info" to="/$(arg camera_front_name)/camera_info"/>
-        <remap from="/detection" to="/detection"/>
+        <remap from="/detection" to="/detection_front"/>
+    </node>
+
+    <node name="armor_processor_front" pkg="armor_processor" type="armor_processor" respawn="true">
+        <remap from="/detection" to="/detection_front"/>
+        <remap from="/track" to="/track"/>
     </node>
 
     <!--后相机-->
@@ -52,7 +57,12 @@
         <rosparam file="$(find rm_pose_solver)/config/pose_solver_config.yaml" command="load"/>
         <remap from="/processor/result_msg" to="/processor/result_msg_back"/>
         <remap from="/galaxy_camera/camera_info" to="/$(arg camera_back_name)/camera_info"/>
-        <remap from="/detection" to="/detection_right"/>
+        <remap from="/detection" to="/detection_back"/>
+    </node>
+
+    <node name="armor_processor_back" pkg="armor_processor" type="armor_processor" respawn="true">
+        <remap from="/detection" to="/detection_back"/>
+        <remap from="/track" to="/track_back"/>
     </node>
 
     <!--左相机-->
@@ -75,6 +85,11 @@
         <remap from="/detection" to="/detection_left"/>
     </node>
 
+    <node name="armor_processor_left" pkg="armor_processor" type="armor_processor" respawn="true">
+        <remap from="/detection" to="/detection_left"/>
+        <remap from="/track" to="/track_left"/>
+    </node>
+
 <!--    &lt;!&ndash;右相机&ndash;&gt;-->
     <node pkg="nodelet" type="nodelet" name="Processor_right"
           args="load rm_digtialimg_proc/Processor vision_nodelet_right" respawn="true">
@@ -95,5 +110,9 @@
         <remap from="/detection" to="/detection_right"/>
     </node>
 
-    <node name="armor_processor" pkg="armor_processor" type="armor_processor" respawn="true"/>
+    <node name="armor_processor_right" pkg="armor_processor" type="armor_processor" respawn="true">
+        <remap from="/detection" to="/detection_right"/>
+        <remap from="/track" to="/track_right"/>
+    </node>
+
 </launch>

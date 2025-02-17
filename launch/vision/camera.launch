@@ -3,15 +3,15 @@
 
     <arg name="camera_type" default="$(env CAMERA_TYPE)" doc="Camera type"/>
     <arg name="camera_type_front" default="hk_camera" doc="Camera type"/>
-    <arg name="camera_type_back" default="galaxy_camera" doc="Camera type"/>
+    <arg name="camera_type_back" default="hk_camera" doc="Camera type"/>
     <arg name="camera_type_left" default="hk_camera" doc="Camera type"/>
-    <arg name="camera_type_right" default="galaxy_camera" doc="Camera type"/>
+    <arg name="camera_type_right" default="hk_camera" doc="Camera type"/>
 
     <arg name="camera_class" default="$(env CAMERA_CLASS)"/>
     <arg name="camera_class_front" default="HKCameraNodelet"/>
-    <arg name="camera_class_back" default="GalaxyCameraNodelet"/>
+    <arg name="camera_class_back" default="HKCameraNodelet"/>
     <arg name="camera_class_left" default="HKCameraNodelet"/>
-    <arg name="camera_class_right" default="GalaxyCameraNodelet"/>
+    <arg name="camera_class_right" default="HKCameraNodelet"/>
 
     <arg name="camera_name" default="camera"/>
     <arg name="camera_front_name" default="camera_front"/>
@@ -55,7 +55,7 @@
             <param name="camera_frame_id" value="$(arg camera_frame)"/>
             <param name="enable_imu_trigger" value="false"/>
             <param name="frame_rate" value="80.0"/>
-            <remap from="/$(arg camera_type_back)/$(arg camera_back_name)/image_raw" to="/$(arg camera_back_name)/image_raw"/>
+            <remap from="/$(arg camera_back_name)/image_raw" to="/$(arg camera_back_name)/image_raw"/>
         </node>
 
 <!--    左相机-->
@@ -90,7 +90,7 @@
             <param name="camera_frame_id" value="$(arg camera_frame)"/>
             <param name="enable_imu_trigger" value="false"/>
             <param name="frame_rate" value="80.0"/>
-            <remap from="/$(arg camera_type_right)/$(arg camera_right_name)/image_raw" to="/$(arg camera_right_name)/image_raw"/>
+            <remap from="/$(arg camera_right_name)/image_raw" to="/$(arg camera_right_name)/image_raw"/>
         </node>
 
 </launch>
