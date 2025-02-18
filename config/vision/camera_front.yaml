@@ -12,3 +12,4 @@ camera_front:
   gamma_selector: 2
   gamma_value: 0.5
   enable_imu_trigger: false
+  sleep_time: 0

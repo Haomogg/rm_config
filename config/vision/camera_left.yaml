@@ -11,3 +11,4 @@ camera_left:
   exposure_auto: false
   exposure_value: 1600
   enable_imu_trigger: false
+  sleep_time: 10
