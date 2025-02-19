@@ -54,7 +54,7 @@
               output="screen">
             <param name="camera_frame_id" value="$(arg camera_frame)"/>
             <param name="enable_imu_trigger" value="false"/>
-            <param name="frame_rate" value="80.0"/>
+            <param name="frame_rate" value="60.0"/>
             <remap from="/$(arg camera_back_name)/image_raw" to="/$(arg camera_back_name)/image_raw"/>
         </node>
 
@@ -71,7 +71,7 @@
               output="screen">
             <param name="camera_frame_id" value="$(arg camera_frame)"/>
             <param name="enable_imu_trigger" value="false"/>
-            <param name="frame_rate" value="80.0"/>
+            <param name="frame_rate" value="60.0"/>
             <remap from="/$(arg camera_left_name)/image_raw" to="/$(arg camera_left_name)/image_raw"/>
         </node>
 
@@ -89,7 +89,7 @@
               output="screen">
             <param name="camera_frame_id" value="$(arg camera_frame)"/>
             <param name="enable_imu_trigger" value="false"/>
-            <param name="frame_rate" value="80.0"/>
+            <param name="frame_rate" value="60.0"/>
             <remap from="/$(arg camera_right_name)/image_raw" to="/$(arg camera_right_name)/image_raw"/>
         </node>
 
