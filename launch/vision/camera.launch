@@ -27,13 +27,13 @@
         <rosparam file="$(find rm_config)/config/vision/camera_front.yaml" command="load"/>
 
         <node pkg="nodelet" type="nodelet" name="vision_nodelet_front" args="manager"
-              output="screen">
+              output="screen" respawn="true">
             <param name="num_worker_threads" value="6"/>
         </node>
 
         <node pkg="nodelet" type="nodelet" name="$(arg camera_front_name)"
               args="load $(arg camera_type_front)/$(arg camera_class_front) vision_nodelet_front"
-              output="screen">
+              output="screen" respawn="true">
             <param name="camera_frame_id" value="$(arg camera_frame)"/>
             <param name="enable_imu_trigger" value="$(arg imu_trigger)"/>
             <remap from="/$(arg camera_front_name)/image_raw" to="/$(arg camera_front_name)/image_raw"/>
@@ -45,13 +45,13 @@
         <rosparam file="$(find rm_config)/config/vision/camera_back.yaml" command="load"/>
 
         <node pkg="nodelet" type="nodelet" name="vision_nodelet_back" args="manager"
-              output="screen">
+              output="screen" respawn="true">
             <param name="num_worker_threads" value="2"/>
         </node>
 
         <node pkg="nodelet" type="nodelet" name="$(arg camera_back_name)"
               args="load $(arg camera_type_back)/$(arg camera_class_back) vision_nodelet_back"
-              output="screen">
+              output="screen" respawn="true">
             <param name="camera_frame_id" value="$(arg camera_frame)"/>
             <param name="enable_imu_trigger" value="false"/>
             <param name="frame_rate" value="60.0"/>
@@ -62,13 +62,13 @@
 <!--        <rosparam file="$(find rm_config)/config/vision/camera_left.yaml" command="load"/>-->
 
 <!--        <node pkg="nodelet" type="nodelet" name="vision_nodelet_left" args="manager"-->
-<!--              output="screen">-->
+<!--              output="screen" respawn="true">-->
 <!--            <param name="num_worker_threads" value="6"/>-->
 <!--        </node>-->
 
 <!--        <node pkg="nodelet" type="nodelet" name="$(arg camera_left_name)"-->
 <!--              args="load $(arg camera_type_left)/$(arg camera_class_left) vision_nodelet_left"-->
-<!--              output="screen">-->
+<!--              output="screen" respawn="true">-->
 <!--            <param name="camera_frame_id" value="$(arg camera_frame)"/>-->
 <!--            <param name="enable_imu_trigger" value="false"/>-->
 <!--            <param name="frame_rate" value="60.0"/>-->
@@ -80,13 +80,13 @@
 <!--        <rosparam file="$(find rm_config)/config/vision/camera_right.yaml" command="load"/>-->
 
 <!--        <node pkg="nodelet" type="nodelet" name="vision_nodelet_right" args="manager"-->
-<!--              output="screen">-->
+<!--              output="screen" respawn="true">-->
 <!--            <param name="num_worker_threads" value="6"/>-->
 <!--        </node>-->
 
 <!--        <node pkg="nodelet" type="nodelet" name="$(arg camera_right_name)"-->
 <!--              args="load $(arg camera_type_right)/$(arg camera_class_right) vision_nodelet_right"-->
-<!--              output="screen">-->
+<!--              output="screen" respawn="true">-->
 <!--            <param name="camera_frame_id" value="$(arg camera_frame)"/>-->
 <!--            <param name="enable_imu_trigger" value="false"/>-->
 <!--            <param name="frame_rate" value="60.0"/>-->
